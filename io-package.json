@@ -1,74 +1,75 @@
 {
-	"common": {
-		"name": "go-echarger",
-		"version": "0.0.1",
-		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"zh-cn": "首次出版"
-			}
-		},
-		"title": "go-eCharger",
-		"titleLang": {
-			"en": "go-eCharger",
-			"de": "go-eCharger",
-			"ru": "go-eCharger",
-			"pt": "go-eCharger",
-			"nl": "go-eCharger",
-			"fr": "go-eCharger",
-			"it": "go-eCharger",
-			"es": "go-eCharger",
-			"pl": "go-eCharger",
-			"zh-cn": "go-eCharger"
-		},
-		"desc": {
-			"en": "Communication module for go-eCharger Wallbox",
-			"de": "Communication module for go-eCharger Wallbox",
-			"ru": "Communication module for go-eCharger Wallbox",
-			"pt": "Communication module for go-eCharger Wallbox",
-			"nl": "Communication module for go-eCharger Wallbox",
-			"fr": "Communication module for go-eCharger Wallbox",
-			"it": "Communication module for go-eCharger Wallbox",
-			"es": "Communication module for go-eCharger Wallbox",
-			"pl": "Communication module for go-eCharger Wallbox",
-			"zh-cn": "Communication module for go-eCharger Wallbox"
-		},
-		"authors": [
-			"Bens0n68 <benno.eberle@gmail.com>"
-		],
-		"keywords": [
-			"wallbox"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "go-echarger.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/Bens0n68/ioBroker.go-echarger/master/admin/go-echarger.png",
-		"readme": "https://github.com/Bens0n68/ioBroker.go-echarger/blob/master/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "household",
-		"compact": true,
-		"materialize": true,
-		"dependencies": [
-			{
-				"js-controller": ">=1.4.2"
-			}
-		]
-	},
-	"native": {
-		"MQTT-Port": "1885",
-		"Wallbox-ipAddress": "192.168.1.127"
-	},
-	"objects": [],
-	"instanceObjects": []
+  "common": {
+    "name": "go-echarger",
+    "version": "0.0.1",
+    "news": {
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版"
+      }
+    },
+    "title": "go-eCharger",
+    "titleLang": {
+      "en": "go-eCharger",
+      "de": "go-eCharger",
+      "ru": "go-eCharger",
+      "pt": "go-eCharger",
+      "nl": "go-eCharger",
+      "fr": "go-eCharger",
+      "it": "go-eCharger",
+      "es": "go-eCharger",
+      "pl": "go-eCharger",
+      "zh-cn": "go-eCharger"
+    },
+    "desc": {
+      "en": "Communication module for go-eCharger Wallbox",
+      "de": "Communication module for go-eCharger Wallbox",
+      "ru": "Communication module for go-eCharger Wallbox",
+      "pt": "Communication module for go-eCharger Wallbox",
+      "nl": "Communication module for go-eCharger Wallbox",
+      "fr": "Communication module for go-eCharger Wallbox",
+      "it": "Communication module for go-eCharger Wallbox",
+      "es": "Communication module for go-eCharger Wallbox",
+      "pl": "Communication module for go-eCharger Wallbox",
+      "zh-cn": "Communication module for go-eCharger Wallbox"
+    },
+    "authors": [
+      "Bens0n68 <benno.eberle@gmail.com>"
+    ],
+    "keywords": [
+      "wallbox"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "go-echarger.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Bens0n68/ioBroker.go-echarger/master/admin/go-echarger.png",
+    "readme": "https://github.com/Bens0n68/ioBroker.go-echarger/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "household",
+    "compact": true,
+    "materialize": true,
+    "dependencies": [
+      {
+        "js-controller": ">=1.4.2"
+      }
+    ],
+    "installedFrom": "https://github.com/Bens0n68/ioBroker.go-echarger/tarball/42666dc62a66f4e40e002b581c4fc479dc1f1bc3"
+  },
+  "native": {
+    "MQTT-Port": "1885",
+    "Wallbox-ipAddress": "192.168.1.127"
+  },
+  "objects": [],
+  "instanceObjects": []
 }
