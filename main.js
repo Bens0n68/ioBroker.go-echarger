@@ -28,6 +28,8 @@ class GoEcharger extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
+
+
 	/**
 	 * Is called when databases are connected and adapter received configuration.
 	 */
@@ -36,8 +38,9 @@ class GoEcharger extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("MQTT Port: " + this.config.MQTT/Port);
+		this.log.info("MQTT Port: " + this.config.MQTT-Port);
 		this.log.info("Wallbox iP Adresse: " + this.config.Wallbox-ipAddress);
+		this.log.info("Wallbox iP Adresse: " + this.config.MQTT-Object-Path);
 
 		/*
 		For every state in the system there has to be also an object of type state
@@ -56,9 +59,31 @@ class GoEcharger extends utils.Adapter {
 			native: {},
 		});
 
+		var myObjects = ["version", "rbc", "rbt", "car", "err", "cbl", "pha", "tmp", "dws", "adi", "uby", "eto", "wst", "nrg", "fwv", "sse", "eca", "ecr","ecd", "ec4", "ec5", "ec6", "ec7", "ec8", "ec9", "ec1", "rca", "rcr", "rcd", "rc4", "rc5", "rc6", "rc7", "rc8", "rc9", "rc1"];
+		var myObjectLen = myObjects.length;
+
+		for (var i = 0; i < myObjectLen; i++) {
+			await this.setObjectAsync(myObjects[i], {
+				type: "state",
+				common: {
+					name: myObjects[i],
+					type: "number",
+					role: "indicator",
+					read: true,
+					write: true,
+					unite: "A",
+				},
+				native: {},
+			});
+		}
+
 		// in this template all states changes inside the adapters namespace are subscribed
 		this.subscribeStates("*");
 
+//BE: Subscribe path of mqqt object!
+		this.subscribeForeignObjects ('mqtt.0.go-eCharger.007566.status');
+
+		 
 		/*
 		setState examples
 		you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
@@ -115,6 +140,7 @@ class GoEcharger extends utils.Adapter {
 	 * @param {ioBroker.State | null | undefined} state
 	 */
 	onStateChange(id, state) {
+		this.log.info(`object: ${id}, state: ${state}`); // Test BE
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
@@ -123,6 +149,37 @@ class GoEcharger extends utils.Adapter {
 			this.log.info(`state ${id} deleted`);
 		}
 	}
+
+//test - ob dieser Event gefeurt wird??
+	onForeignStateChange(id, state) {
+		this.log.info(`onForeignStateChanged ist gefeuert worden :-)`);
+		if (state) {
+			// The state was changed
+			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+		} else {
+			// The state was deleted
+			this.log.info(`state ${id} deleted`);
+		}
+	}
+
+//this.on('stateChange', function (id, state) {
+//		if (id == 'mqtt.0.go-eCharger.007566.status'){
+//	on({id: 'mqtt.0.go-eCharger.007566.status', change: "ne"}, function (obj) {
+//			this.log.info(`eCharger Status change!`);
+//ReadWallbox();
+//---- Werte nur alle X Sekunden aktualisieren
+//var iCurrTime = (new Date().getHours() * 3600 + new Date().getMinutes() * 60 + new Date().getSeconds());
+//if (iCurrTime > (iLastUpdate + iAbfrageabstand)) {
+//    log("Update mqqt" + " + cur=" + iCurrTime + ", last=" + iLastUpdate);
+//    iLastUpdate = iCurrTime
+//    ReadIt();
+//}
+// else
+//    log("Update mqqt ausgesetzt");
+//this.log.info(`state change .-)`); {
+//});
+
+
 
 	// /**
 	//  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
